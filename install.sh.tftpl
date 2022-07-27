@@ -10,6 +10,9 @@ mkdir -p /etc/apt/keyrings
 curl -fsSL https://download.docker.com/linux/ubuntu/gpg | gpg --dearmor -o /etc/apt/keyrings/docker.gpg
 echo "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" > /etc/apt/sources.list.d/docker.list
 apt-get update -y
+mkdir /etc/docker
+chmod +rx /etc/docker
+echo '{ "bip": "${docker_bip}" }' > /etc/docker/daemon.json
 apt-get install -y docker-ce docker-ce-cli containerd.io
 
 # Install GitLab runner
@@ -35,4 +38,8 @@ gitlab-runner register \
   --registration-token "${registration_token}" \
   --name "OpenStack runner - ${name}" \
   --executor docker \
+  --docker-network-mode ${docker_network_mode} \
+%{ if docker_privileged ~}
+  --docker-privileged \
+%{ endif ~}
   --docker-image ${docker_image}
