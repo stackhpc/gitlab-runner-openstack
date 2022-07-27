@@ -31,7 +31,9 @@ Create a
 [tfvars](https://www.terraform.io/language/values/variables#variable-definitions-tfvars-files)
 file to configure the runner:
 
-```ruby  title="my-runner.tfvars"
+```ruby
+## FILE: my-runner.tfvars
+
 # The ID of the network to provision the runner on
 # Must be able to reach the internet, but does not have to be reachable from the internet
 network_id = "<network id>"
