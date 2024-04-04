@@ -34,7 +34,7 @@ EOF
 gitlab-runner register \
   ${register_extra_args} \
   --non-interactive \
-  --url "${scheme}://${gitlab_host}" \
+  --url "${gitlab_host}" \
   --registration-token "${registration_token}" \
   --name "OpenStack runner - ${name}" \
   --executor docker \
