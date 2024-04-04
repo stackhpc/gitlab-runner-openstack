@@ -1,7 +1,7 @@
 # gitlab-runner-openstack
 
-This repository contains some simple [Terraform](https://www.terraform.io/) that
-launches a [GitLab CI runner](https://docs.gitlab.com/runner/) in an
+This repository contains some simple [OpenTofu](https://opentofu.org) that
+uses Cloud-Init to launch a [GitLab CI runner](https://docs.gitlab.com/runner/) in an
 [OpenStack](https://www.openstack.org/) project that uses the
 [Docker executor](https://docs.gitlab.com/runner/executors/docker.html).
 
