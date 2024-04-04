@@ -1,0 +1,17 @@
+## FILE: my-runner.tfvars
+
+# The ID of the network to provision the runner on
+# Must be able to reach the internet, but does not have to be reachable from the internet
+network_id = "<network-id>"
+
+# The ID of an Ubuntu 22.04 image to use
+image_id = "<image-id>"
+
+# The name of the flavor to use for the runner
+flavor_name = "<flavor-name>"
+
+# The GitLab host to connect to
+gitlab_host = "<https://gitlab.example.org>"
+
+# The token to use when registering the runner
+registration_token = "<token>
