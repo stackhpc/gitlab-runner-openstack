@@ -62,7 +62,7 @@ variable "ca_file" {
 variable "docker_image" {
   type = string
   description = "Default Docker image for the executor."
-  default = "ubuntu:focal"
+  default = "ubuntu:jammy"
 }
 
 variable "docker_network_mode" {
