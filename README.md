@@ -8,7 +8,7 @@ launches a [GitLab CI runner](https://docs.gitlab.com/runner/) in an
 ## Usage
 
 First, ensure
-[Terraform is installed](https://learn.hashicorp.com/tutorials/terraform/install-cli).
+[OpenTofu is installed](https://opentofu.org/docs/intro/install/).
 
 Next, make sure you have credentials for the target OpenStack project. The following
 examples will assume the use of a
@@ -28,27 +28,28 @@ cd gitlab-runner-openstack
 ```
 
 Create a
-[tfvars](https://www.terraform.io/language/values/variables#variable-definitions-tfvars-files)
+[tfvars](https://opentofu.org/docs/language/values/variables/#variable-definitions-tfvars-files)
 file to configure the runner:
 
 ```ruby
 ## FILE: my-runner.tfvars
 
 # The ID of the network to provision the runner on
-# Must be able to reach the internet, but does not have to be reachable from the internet
-network_id = "<network id>"
+# Must be able to reach the internet, but does not have to be reachable from the internet
+network_id = "<network-id>"
 
-# The ID of an Ubuntu 20.04 image to use
-image_id = "<image id>"
+# The ID of an Ubuntu 22.04 image to use
+image_id = "<image-id>"
 
-# The name of the flavor to use for the runner
-flavor_name = "<flavor name>"
+# The name of the flavor to use for the runner
+flavor_name = "<flavor-name>"
 
 # The GitLab host to connect to
-gitlab_host = "<gitlab host>"
+gitlab_host = "<https://gitlab.example.org>"
 
 # The token to use when registering the runner
-registration_token = "<registration token>"
+registration_token = "<token>"
+
 ```
 
 Then execute the following commands to deploy a runner:
@@ -58,6 +59,9 @@ Then execute the following commands to deploy a runner:
 export OS_CLOUD=openstack
 export OS_CLIENT_CONFIG_FILE=/path/to/clouds.yaml
 
+# Init the OpenTofu state
+tofu init
+
 # Provision the runner
-terraform apply -var-file=./my-runner.tfvars -auto-approve
+tofu apply -var-file=./my-runner.tfvars -auto-approve
 ```
