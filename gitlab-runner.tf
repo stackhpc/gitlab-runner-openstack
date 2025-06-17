@@ -37,6 +37,12 @@ variable "docker_bip" {
   default = "172.17.0.1/16"
 }
 
+variable "docker_mtu" {
+  type = number
+  description = "The MTU of the Docker network"
+  default = 1400
+}
+
 variable "gitlab_host" {
   type = string
   description = "The host of the GitLab server to connect to."
