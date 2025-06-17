@@ -50,6 +50,13 @@ gitlab_host = "<https://gitlab.example.org>"
 # The token to use when registering the runner
 registration_token = "<token>"
 
+## Uncomment to create a stackhpc-kayobe-config "builder" runner
+
+# Volumes required for builder
+#register_extra_args = "--docker-volumes '/var/run/docker.sock:/var/run/docker.sock' --docker-volumes '/cache'"
+
+# Enable priviledged docker
+#docker_privileged = true
 ```
 
 Then execute the following commands to deploy a runner:
