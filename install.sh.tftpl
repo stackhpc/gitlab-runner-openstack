@@ -12,7 +12,7 @@ echo "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.
 apt-get update -y
 mkdir /etc/docker
 chmod +rx /etc/docker
-echo '{ "bip": "${docker_bip}" }' > /etc/docker/daemon.json
+echo '{ "bip": "${docker_bip}", "mtu": ${docker_mtu} }' > /etc/docker/daemon.json
 apt-get install -y docker-ce docker-ce-cli containerd.io
 
 # Install GitLab runner
